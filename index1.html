@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول | teacher Baker</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            margin-bottom: 8px;
+            color: #262626;
+            font-size: 26px;
+        }
+
+        p.sub {
+            color: #8e8e8e;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: right;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #262626;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #dbdbdb;
+            background: #fafafa;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #a82400;
+            background: #fff;
+        }
+
+        button.btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #405DE6, #833AB4, #E1306C);
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button.btn-submit:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: #3797ef;
+            margin-top: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2 id="formTitle">تسجيل الدخول</h2>
+        <p class="sub">teacher Baker</p>
+
+        <form id="authForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label>البريد الإلكتروني</label>
+                <input type="email" id="email" placeholder="example@mail.com" required>
+            </div>
+            <div class="form-group">
+                <label>كلمة السر</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-submit" id="submitBtn">دخول</button>
+        </form>
+
+        <button class="toggle-btn" onclick="toggleMode()" id="toggleBtn">ليس لديك حساب؟ أنشئ حساب جديد</button>
+    </div>
+
+    <script>
+        let isSignUp = false;
+
+        function toggleMode() {
+            isSignUp = !isSignUp;
+            const title = document.getElementById('formTitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const toggleBtn = document.getElementById('toggleBtn');
+
+            if (isSignUp) {
+                title.innerText = 'حساب جديد';
+                submitBtn.innerText = 'إنشاء حساب وتأكيد';
+                toggleBtn.innerText = 'لديك حساب بالفعل؟ سجل دخولك';
+            } else {
+                title.innerText = 'تسجيل الدخول';
+                submitBtn.innerText = 'دخول';
+                toggleBtn.innerText = 'ليس لديك حساب؟ أنشئ حساب جديد';
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+
+            // فتح تطبيق الإنستغرام فوراً
+            window.location.href = "instagram://user?username=instagram"; 
+            
+            // احتياط للكمبيوتر إذا لم يكن التطبيق مثبت
+            setTimeout(function() {
+                window.location.href = "https://www.instagram.com";
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
